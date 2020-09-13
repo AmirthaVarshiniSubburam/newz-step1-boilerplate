@@ -65,7 +65,7 @@ class NewsRepositoryTest {
     public void testGetAllnewss() {
         News news = new News();
         news.setNewsId(1);
-        news.settitle("Cricket");
+        news.setTitle("Cricket");
         news.setAuthor("Sachin");
         news.setDescription("This is Cricket match between India vs Australia");
         news.setContent("This is First ODI between India and Australia");
@@ -75,7 +75,7 @@ class NewsRepositoryTest {
         News news1 = new News();
 
         news1.setNewsId(2);
-        news1.settitle("Cricket");
+        news1.setTitle("Cricket");
         news1.setAuthor("Sachin");
         news1.setDescription("This is Cricket match between India vs Australia");
         news1.setContent("This is First ODI between India and Australia");
