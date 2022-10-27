@@ -14,7 +14,6 @@ import com.stackroute.newz.model.News;
  * of this class will be used by other parts of the applications such
  * as Controllers and Test Cases
  * */
-
 @Repository
 public class NewsRepository {
 	
@@ -32,7 +31,8 @@ public class NewsRepository {
 
     /* This method should set the list variable with new list of news */
     public void setNewsList(List<News> newsList) {
-        newsList.addAll(newsList);
+    	newsList.addAll(newsList);
+
     }
 
     /*
@@ -40,7 +40,8 @@ public class NewsRepository {
 	 * list
 	 */
     public  void addNews(News news) {
-        newsList.add(news);
+    	newsList.add(news);
+        
     }
     
     /* This method should return the list of news */
@@ -50,13 +51,16 @@ public class NewsRepository {
     
     /* This method should delete a specified news from the list */
     public boolean deleteNews(int newsId) {
-    	
-    	for(News news: newsList) {
-    		if(news.getNewsid()== newsId) {
-    			newsList.remove(news);
-    		}
-    	}
        
+    	for (News news : newsList) {
+    		
+    		if(news.getNewsId() == newsId) {
+    			newsList.remove(news);
+    			return true;
+    		}
+			
+		}
+    	
         return false;
        
 

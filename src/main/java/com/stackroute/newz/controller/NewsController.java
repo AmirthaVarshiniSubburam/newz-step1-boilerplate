@@ -1,7 +1,5 @@
 package com.stackroute.newz.controller;
 
-
-
 import java.util.Objects;
 
 import org.springframework.context.ApplicationContext;
@@ -21,13 +19,14 @@ import com.stackroute.newz.repository.NewsRepository;
  * Annotate the class with @Controller annotation. @Controller annotation is used to mark 
  * any java class as a controller so that Spring can recognize this class as a Controller 
  */
-
 @Controller
 public class NewsController {
+	
 	
 	private ApplicationContext appCtx=new ClassPathXmlApplicationContext("beans.xml");
 	News newz=(News) appCtx.getBean("news");
 	NewsRepository newsRepo=(NewsRepository) appCtx.getBean("newsRepository");
+	
 	/*
 	 * From the problem statement, we can understand that the application
 	 * requires us to implement the following functionalities.
@@ -42,12 +41,13 @@ public class NewsController {
 		map.addAttribute("newz",newsRepo.getAllNews());
 			return "index";	
 		}
-	/* 	 	 
+	
+	
+	/* 
 	 * Get the application context from resources/beans.xml file using ClassPathXmlApplicationContext() class.
 	 * Retrieve the News object from the context.
 	 * Retrieve the NewsRepository object from the context.
 	 */
-
 
 	@SuppressWarnings("finally")
 	@PostMapping("/saveData")
@@ -60,15 +60,9 @@ public class NewsController {
 		 
 			newsRepo.addNews(news);
 			return "redirect:/";
-	}
-			@GetMapping("/{newsId}")
-			public String deleteNews(@PathVariable("newsId") int id)
-			{	newsRepo.deleteNews(id);
-				
-				return "redirect:/";
-			}
 		
 	}
+	
 	/*Define a handler method to read the existing news by calling the getNewsList() method 
 	 * of the NewsRepository class and add it to the ModelMap which is an implementation of Map 
 	 * for use when building model data for use with views. it should map to the default URL i.e. "/" */
@@ -81,6 +75,13 @@ public class NewsController {
 	 * news elements. Hence, reading news has to be done here again.
 	 * This handler method should map to the URL "/saveNews". 
 	*/
+	
+	@GetMapping("/{newsId}")
+	public String deleteNews(@PathVariable("newsId") int id)
+	{	newsRepo.deleteNews(id);
+		
+		return "redirect:/";
+	}
 	
 	
 	/* Define a handler method to delete an existing news by calling the deleteNews() method 
